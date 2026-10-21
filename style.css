@@ -401,15 +401,15 @@ section {
 }
 
 .music-hint-deer {
-    width: 56px;
-    filter: drop-shadow(0 5px 8px rgba(150, 110, 140, 0.25));
+    width: 72px;
+    filter: drop-shadow(0 6px 9px rgba(150, 110, 140, 0.25));
     animation: cd-float 4.5s ease-in-out infinite;
 }
 
 .music-hint-text {
     font-family: "ZCOOL KuaiLe", "Microsoft YaHei", sans-serif;
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: 17px;
+    line-height: 1.6;
     letter-spacing: 2px;
     color: #a3769f;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
