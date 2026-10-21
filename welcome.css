@@ -1,0 +1,146 @@
+/* ========== 开始页 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.welcome-body {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: #2a2530;
+}
+
+.splash {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    padding: 32px 20px;
+    text-align: center;
+    background: url("bg-lockers.jpg") center / cover no-repeat;
+    transition: opacity 0.45s ease;
+}
+
+/* 暗色压层，保证白字可读，同时带一点粉调 */
+.splash::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(46, 32, 44, 0.38), rgba(46, 32, 44, 0.5));
+}
+
+.splash > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 圆形头像：白边 + 柔和投影，缓慢上下漂浮 */
+.splash-avatar {
+    width: 158px;
+    height: 158px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+    animation: splash-float 4.5s ease-in-out infinite;
+}
+
+.splash-title {
+    color: #ffffff;
+    font-size: clamp(26px, 6vw, 46px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+    animation: splash-rise 0.8s ease 0.1s both;
+}
+
+/* 白色胶囊按钮，粉色文字，与图一一致 */
+.splash-btn {
+    display: inline-block;
+    padding: 13px 34px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #e0558f;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    animation: splash-rise 0.8s ease 0.25s both;
+}
+
+.splash-btn:hover,
+.splash-btn:focus-visible {
+    background: #fff0f7;
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36);
+}
+
+.splash-btn:focus-visible {
+    outline: 3px solid #ffb1d5;
+    outline-offset: 3px;
+}
+
+/* 离场：点击按钮后整页淡出 */
+.welcome-body.is-leaving .splash {
+    opacity: 0;
+}
+
+@keyframes splash-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes splash-rise {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 小屏：头像与标题略收 */
+@media (max-width: 480px) {
+    .splash {
+        gap: 20px;
+    }
+
+    .splash-avatar {
+        width: 128px;
+        height: 128px;
+        border-width: 5px;
+    }
+
+    .splash-btn {
+        padding: 12px 28px;
+        font-size: 16px;
+    }
+}
+
+/* 尊重系统"减少动效"设置 */
+@media (prefers-reduced-motion: reduce) {
+    .splash-avatar,
+    .splash-title,
+    .splash-btn {
+        animation: none;
+    }
+
+    .splash,
+    .splash-btn {
+        transition: none;
+    }
+}

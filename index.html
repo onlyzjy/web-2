@@ -1,67 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
-    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="周同学的个人主页 —— 大数据专业学生，喜欢摄影、音乐和网页设计">
+    <title>周同学的个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
 </head>
 
-<body>
-    <nav class="nav">
-    <a href="#">首页</a>
-    <a href="#about">关于我</a>
-    <a href="#works">我的作品</a>
-    <a href="#contact">联系我</a>
-  </nav>
-  <main>
-    <h1>周同学的个人主页</h1>
-    <h2>about me </h2>
-    <section class="profile" id="about">
-      <div class="avatar">周</div>
-      <div>
-        <h2>你好，我是周同学</h2>
-        <p>大数据专业学生，正在学习 Web 程序设计</p>
-        <p>喜欢摄影、音乐，也喜欢把想法做成网页</p>
-      </div>
-      </section>
-    <section class="works-section">
-    <h2>我的作品 </h2>
-    <div class="works-wrap">
-    <article class="work">
-        <h3>个人主页</h3>
-        <p>记录我的兴趣与学习经历</p>
-        <a href="#project-1">查看作品</a>
-      </article>
-    <article class="work">
-        <h3>我的摄影集</h3>
-        <p>记录我的摄影日常</p>
-        <a href="#project-2">查看作品</a>
-      </article>
-    <article class="work">
-        <h3>学习笔记</h3>
-        <p>整理HTML和CSS的知识，记录每次练习中的问题与解决过程</p>
-        <a href="#project-3">查看作品</a>
-      </article>
-      </div>
-      </section>
-      <section class="details">
-      <h2>作品详情</h2>
-      <h3 id="project-1">个人主页</h3>
-      <p>用 HTML 组织个人信息，用 CSS 设置颜色、留白和布局</p>
-      <h3 id="project-2">摄影集</h3>
-      <p>记录我的日常生活</p>
-      <h3 id="project-3">学习笔记</h3>
-      <p>记录盒模型、选择器和 Flex 布局的学习心得</p>
-    </section>
-    <section class="contact" id="contact">
-      <h2>联系我</h2>
-      <p>欢迎交流网页设计和摄影</p>
-      <p>邮箱：<a href="mailto:2408349073@qq.com">2408349073@qq.com</a></p>
-    </section>
-<a href=" " class="back‑top">回到顶部</a >
+<body id="top">
+    <a class="skip-link" href="#main">跳到主要内容</a>
 
+    <header class="site-header">
+        <div class="nav-inner">
+            <a class="brand" href="#top" aria-label="welcome to 周同学的个人主页">
+                <span class="brand-prefix">welcome to&nbsp;</span><span class="brand-name">周同学的个人主页</span><span
+                    class="brand-caret" aria-hidden="true"></span>
+            </a>
+
+            <nav class="nav" id="site-nav" aria-label="主导航">
+                <a class="nav-link is-active" href="#top" aria-current="page">首页</a>
+                <a class="nav-link" href="#about">关于我</a>
+                <a class="nav-link" href="#works">我的作品</a>
+                <a class="nav-link" href="#music">我的音乐</a>
+                <a class="nav-link" href="#contact">联系我</a>
+            </nav>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+                aria-label="打开导航菜单">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="about-section" id="about">
+            <div class="about-card">
+                <img class="about-avatar" src="avatar-cat.jpg" alt="周佳颖的头像">
+                <p class="about-eyebrow">About Me</p>
+                <p class="about-text"><span class="about-hello">hello！</span>我叫周佳颖，<br>是大数据专业的学生，<br>喜欢音乐、摄影和电影，也喜欢把想法做成网页。</p>
+            </div>
+        </section>
+
+        <section class="works-section" id="works">
+            <a class="camera-link" href="gallery.html" aria-label="我的作品，点击进入作品集">
+                <img class="camera-img" src="camera.png" alt="">
+            </a>
+        </section>
+
+        <section class="music-section" id="music" aria-label="我的音乐">
+            <div class="music-hint">
+                <img class="music-hint-deer" src="deer.png" alt="">
+                <p class="music-hint-text">点击光盘<br>解锁我的歌单</p>
+            </div>
+            <div class="cd-wave">
+                <span class="cd" style="--y:0px;--i:0">
+                    <img class="cd-img" src="cd-1.png" alt="">
+                    <img class="cd-pop pop-above" src="song-1.png" alt="Heavy Serenade - NMIXX" loading="lazy">
+                </span>
+                <span class="cd" style="--y:20px;--i:1">
+                    <img class="cd-img" src="cd-2.png" alt="">
+                    <img class="cd-pop pop-below" src="song-2.png" alt="Unlock it (Lock It) - Charli xcx/Kim Petras/朴宰范" loading="lazy">
+                </span>
+                <span class="cd" style="--y:28px;--i:2">
+                    <img class="cd-img" src="cd-3.png" alt="">
+                    <img class="cd-pop pop-above" src="song-3.png" alt="Moonride - Hearts2Hearts" loading="lazy">
+                </span>
+                <span class="cd" style="--y:20px;--i:3">
+                    <img class="cd-img" src="cd-4.png" alt="">
+                    <img class="cd-pop pop-below" src="song-4.png" alt="Never Let Go - LNGSHOT" loading="lazy">
+                </span>
+                <span class="cd" style="--y:0px;--i:4">
+                    <img class="cd-img" src="cd-5.png" alt="">
+                    <img class="cd-pop pop-above" src="song-5.png" alt="Sunburst - RIIZE" loading="lazy">
+                </span>
+                <span class="cd" style="--y:-20px;--i:5">
+                    <img class="cd-img" src="cd-6.png" alt="">
+                    <img class="cd-pop pop-below" src="song-6.png" alt="Versace on the Floor - Bruno Mars" loading="lazy">
+                </span>
+                <span class="cd" style="--y:-28px;--i:6">
+                    <img class="cd-img" src="cd-7.png" alt="">
+                    <img class="cd-pop pop-above" src="song-7.png" alt="We Belong Together - Mariah Carey" loading="lazy">
+                </span>
+                <span class="cd" style="--y:-20px;--i:7">
+                    <img class="cd-img" src="cd-8.png" alt="">
+                    <img class="cd-pop pop-below" src="song-8.png" alt="ASAP - NewJeans" loading="lazy">
+                </span>
+                <span class="cd" style="--y:0px;--i:8">
+                    <img class="cd-img" src="cd-9.png" alt="">
+                    <img class="cd-pop pop-above" src="song-9.png" alt="attitude - 董梓灏 David" loading="lazy">
+                </span>
+                <span class="cd" style="--y:20px;--i:9">
+                    <img class="cd-img" src="cd-10.png" alt="">
+                    <img class="cd-pop pop-below" src="song-10.png" alt="팔레트 (Palette) - IU/G-DRAGON" loading="lazy">
+                </span>
+                <span class="cd" style="--y:28px;--i:10">
+                    <img class="cd-img" src="cd-11.png" alt="">
+                    <img class="cd-pop pop-above" src="song-11.png" alt="jellyous - ILLIT" loading="lazy">
+                </span>
+                <span class="cd" style="--y:20px;--i:11">
+                    <img class="cd-img" src="cd-12.png" alt="">
+                    <img class="cd-pop pop-below pop-right" src="song-12.png" alt="Paper Hearts - Tori Kelly" loading="lazy">
+                </span>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>联系我</h2>
+            <p>欢迎交流网页设计和摄影</p>
+            <p>邮箱：<a href="mailto:2408349073@qq.com">2408349073@qq.com</a></p>
+        </section>
+
+        <a href="#top" class="back-top" aria-label="回到顶部">↑ 顶部</a>
+    </main>
+
+    <footer>© 2026 周同学的个人主页</footer>
+
+    <script src="nav.js" defer></script>
 </body>
 
 </html>
-<footer>周同学的个人主页</footer>
