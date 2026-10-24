@@ -743,7 +743,7 @@ body.cz-picking * { cursor: crosshair !important; }
     outline-offset: 3px;
 }
 
-/* ========== 板块4：我的电影（海报围成一圈，可拖动旋转） ========== */
+/* ========== 板块4：我的电影（NCT WISH 风：奶油蓝黄 + 拍立得照片卡圈） ========== */
 .movies-section {
     position: relative;
     display: flex;
@@ -752,19 +752,41 @@ body.cz-picking * { cursor: crosshair !important; }
     min-height: max(140vh, 1050px);
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    background: linear-gradient(180deg, #f6f2f7, #eef0f6);
     overflow: hidden;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(255, 244, 214, 0.9) 0%, transparent 42%),
+        radial-gradient(circle at 84% 78%, rgba(214, 233, 252, 0.9) 0%, transparent 45%),
+        radial-gradient(rgba(255, 255, 255, 0.9) 2.2px, transparent 2.6px),
+        linear-gradient(180deg, #eaf3fc 0%, #fdf8ec 55%, #eaf3fc 100%);
+    background-size: auto, auto, 26px 26px, auto;
+}
+
+/* 星星小心心装饰 */
+.movies-deco span {
+    position: absolute;
+    z-index: 1;
+    color: #ffd66e;
+    font-size: 26px;
+    text-shadow: 0 2px 6px rgba(150, 140, 190, 0.18);
+    animation: deco-bob 3.6s ease-in-out infinite;
+}
+.movies-deco span:nth-child(odd) { color: #a8cdf0; animation-delay: -1.2s; }
+.movies-deco span:nth-child(3n) { color: #ffc9d6; animation-delay: -2.4s; }
+@keyframes deco-bob {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.12); }
 }
 
 .film-ring {
     --size: min(920px, 92vw);
-    --rr: calc(var(--size) / 2 - 95px);
+    --rr: calc(var(--size) / 2 - 105px);
     position: relative;
     width: var(--size);
     height: var(--size);
     transform: rotate(var(--spin, 0deg));
     cursor: grab;
     user-select: none;
+    z-index: 2;
 }
 .film-ring.dragging { cursor: grabbing; }
 
@@ -778,31 +800,54 @@ body.cz-picking * { cursor: crosshair !important; }
         translateY(calc(-1 * var(--rr)))
         rotate(calc(var(--a) * -1))
         rotate(calc(var(--spin, 0deg) * -1));
-    transition: filter 0.25s;
+}
+.film:hover { z-index: 3; }
+
+/* 拍立得照片卡：白边 + 圆角 + 奶油软阴影 */
+.film-inner {
+    display: block;
+    background: #fff;
+    padding: 9px 9px 10px;
+    border-radius: 18px;
+    box-shadow: 0 10px 24px rgba(140, 160, 210, 0.28), 0 3px 8px rgba(255, 205, 120, 0.25);
+    transition: transform 0.25s, box-shadow 0.25s;
+    animation: film-float 4.2s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * -0.55s);
+}
+.film:hover .film-inner {
+    transform: scale(1.07);
+    box-shadow: 0 18px 34px rgba(140, 160, 210, 0.4), 0 5px 14px rgba(255, 205, 120, 0.35);
+}
+@keyframes film-float {
+    0%, 100% { margin-top: 0; }
+    50% { margin-top: -9px; }
 }
 .film img {
     display: block;
-    width: clamp(170px, 15.5vw, 225px);
+    width: clamp(170px, 15vw, 218px);
     aspect-ratio: 2 / 3;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 16px 30px rgba(110, 90, 130, 0.3);
+    border-radius: 12px;
     pointer-events: none;
 }
 .film figcaption {
-    margin-top: 12px;
+    margin-top: 9px;
     text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    color: #111;
+    font-family: "Comfortaa", "Arial Rounded MT Bold", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #6a7fb5;
 }
-.film:hover { filter: brightness(1.06); z-index: 2; }
+.film figcaption::before { content: "✦ "; color: #ffd66e; }
 
 @media (max-width: 720px) {
     .movies-section { min-height: max(110vh, 760px); }
-    .film-ring { --size: min(560px, 92vw); }
-    .film img { width: clamp(100px, 24vw, 130px); }
+    .film-ring { --size: min(560px, 92vw); --rr: calc(var(--size) / 2 - 78px); }
+    .film img { width: clamp(96px, 22vw, 126px); }
+    .film-inner { padding: 6px 6px 7px; border-radius: 14px; }
+    .film figcaption { font-size: 9px; margin-top: 6px; }
+}
 }
 }
 }
