@@ -385,8 +385,8 @@ section {
     font-weight: 800;
     font-size: 24px;
     letter-spacing: 1px;
-    color: #d95f8f;
-    -webkit-text-stroke: 0.6px #c94f80;
+    color: #1a1a1a;
+    -webkit-text-stroke: 0;
     white-space: nowrap;
     animation: hint-bounce 1.8s ease-in-out infinite;
 }
