@@ -1,48 +1,34 @@
-/* 板块4：海报圈 —— 按住左右拖动即可旋转（对应参考图 SCROLL / DRAG TO ROTATE） */
+/* 板块4：电影海报一排 —— 鼠标按住左右拖动（触屏可直接滑动） */
 (function () {
     'use strict';
     function init() {
-        var ring = document.getElementById('filmRing');
-        if (!ring) return;
+        var row = document.getElementById('filmRow');
+        if (!row) return;
 
-        var spin = 0;
-        var isDown = false, startX = 0, startSpin = 0;
+        var isDown = false, startX = 0, startScroll = 0, moved = false;
 
-        function render() {
-            ring.style.setProperty('--spin', spin + 'deg');
-        }
-
-        ring.addEventListener('pointerdown', function (e) {
-            if (e.pointerType === 'touch') {
-                // 触屏：记录起点，在 pointermove 里旋转
-            }
+        row.addEventListener('pointerdown', function (e) {
             isDown = true;
+            moved = false;
             startX = e.clientX;
-            startSpin = spin;
-            ring.classList.add('dragging');
-            ring.setPointerCapture(e.pointerId);
-            e.preventDefault();
+            startScroll = row.scrollLeft;
+            row.classList.add('dragging');
+            row.setPointerCapture(e.pointerId);
         });
 
-        ring.addEventListener('pointermove', function (e) {
+        row.addEventListener('pointermove', function (e) {
             if (!isDown) return;
-            spin = startSpin + (e.clientX - startX) * 0.25;
-            render();
+            var dx = e.clientX - startX;
+            if (Math.abs(dx) > 4) moved = true;
+            row.scrollLeft = startScroll - dx;
         });
 
         function endDrag() {
             isDown = false;
-            ring.classList.remove('dragging');
+            row.classList.remove('dragging');
         }
-        ring.addEventListener('pointerup', endDrag);
-        ring.addEventListener('pointercancel', endDrag);
-
-        // 滚轮也可旋转
-        ring.addEventListener('wheel', function (e) {
-            e.preventDefault();
-            spin += (e.deltaY + e.deltaX) * 0.15;
-            render();
-        }, { passive: false });
+        row.addEventListener('pointerup', endDrag);
+        row.addEventListener('pointercancel', endDrag);
     }
 
     if (document.readyState === 'loading') {
