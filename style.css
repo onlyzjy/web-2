@@ -749,62 +749,24 @@ body.cz-picking * { cursor: crosshair !important; }
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 96px);
+    min-height: max(140vh, 1050px);
     width: 100vw;
     margin-left: calc(50% - 50vw);
     background: linear-gradient(180deg, #f6f2f7, #eef0f6);
     overflow: hidden;
 }
 
-.movies-heading {
-    position: absolute;
-    top: 56px;
-    left: 48px;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.02;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.movies-tip {
-    position: absolute;
-    right: 34px;
-    bottom: 20px;
-    z-index: 2;
-    font-family: "ZCOOL KuaiLe", "Microsoft YaHei", sans-serif;
-    font-size: 14px;
-    letter-spacing: 2px;
-    color: #b9a8c6;
-}
-
 .film-ring {
-    --size: min(640px, 70vw);
-    --rr: calc(var(--size) / 2 - 88px);
+    --size: min(920px, 92vw);
+    --rr: calc(var(--size) / 2 - 95px);
     position: relative;
     width: var(--size);
     height: var(--size);
-    margin-top: 0;
     transform: rotate(var(--spin, 0deg));
     cursor: grab;
     user-select: none;
 }
 .film-ring.dragging { cursor: grabbing; }
-
-/* 圆心：头像 */
-.ring-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 165px;
-    height: 165px;
-    transform: translate(-50%, -50%) rotate(calc(var(--spin, 0deg) * -1));
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 16px 34px rgba(110, 90, 130, 0.3);
-    z-index: 1;
-    pointer-events: none;
-}
 
 .film {
     position: absolute;
@@ -820,19 +782,27 @@ body.cz-picking * { cursor: crosshair !important; }
 }
 .film img {
     display: block;
-    width: clamp(150px, 13.5vw, 190px);
+    width: clamp(170px, 15.5vw, 225px);
     aspect-ratio: 2 / 3;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 16px 30px rgba(110, 90, 130, 0.3);
     pointer-events: none;
 }
+.film figcaption {
+    margin-top: 12px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #111;
+}
 .film:hover { filter: brightness(1.06); z-index: 2; }
 
 @media (max-width: 720px) {
-    .movies-heading { top: 110px; left: 24px; }
-    .film-ring { margin-top: 120px; }
-    .ring-center { width: 110px; height: 110px; }
-    .film img { width: clamp(96px, 24vw, 130px); }
+    .movies-section { min-height: max(110vh, 760px); }
+    .film-ring { --size: min(560px, 92vw); }
+    .film img { width: clamp(100px, 24vw, 130px); }
+}
 }
 }
