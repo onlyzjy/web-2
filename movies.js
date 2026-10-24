@@ -1,40 +1,48 @@
-/* 板块4：电影海报墙 —— 鼠标按住左右拖动（触摸板/滚轮也可横向滑动） */
+/* 板块4：海报圈 —— 按住左右拖动即可旋转（对应参考图 SCROLL / DRAG TO ROTATE） */
 (function () {
     'use strict';
     function init() {
-        var track = document.getElementById('filmTrack');
-        if (!track) return;
+        var ring = document.getElementById('filmRing');
+        if (!ring) return;
 
-        var isDown = false, startX = 0, startScroll = 0, moved = false;
+        var spin = 0;
+        var isDown = false, startX = 0, startSpin = 0;
 
-        track.addEventListener('pointerdown', function (e) {
-            if (e.pointerType === 'touch') return; // 触屏用原生滚动
+        function render() {
+            ring.style.setProperty('--spin', spin + 'deg');
+        }
+
+        ring.addEventListener('pointerdown', function (e) {
+            if (e.pointerType === 'touch') {
+                // 触屏：记录起点，在 pointermove 里旋转
+            }
             isDown = true;
-            moved = false;
             startX = e.clientX;
-            startScroll = track.scrollLeft;
-            track.classList.add('dragging');
-            track.setPointerCapture(e.pointerId);
+            startSpin = spin;
+            ring.classList.add('dragging');
+            ring.setPointerCapture(e.pointerId);
+            e.preventDefault();
         });
 
-        track.addEventListener('pointermove', function (e) {
+        ring.addEventListener('pointermove', function (e) {
             if (!isDown) return;
-            var dx = e.clientX - startX;
-            if (Math.abs(dx) > 4) moved = true;
-            track.scrollLeft = startScroll - dx;
+            spin = startSpin + (e.clientX - startX) * 0.25;
+            render();
         });
 
         function endDrag() {
             isDown = false;
-            track.classList.remove('dragging');
+            ring.classList.remove('dragging');
         }
-        track.addEventListener('pointerup', endDrag);
-        track.addEventListener('pointercancel', endDrag);
+        ring.addEventListener('pointerup', endDrag);
+        ring.addEventListener('pointercancel', endDrag);
 
-        // 拖动结束时阻止误触链接（目前海报无链接，预留）
-        track.addEventListener('click', function (e) {
-            if (moved) { e.preventDefault(); e.stopPropagation(); }
-        }, true);
+        // 滚轮也可旋转
+        ring.addEventListener('wheel', function (e) {
+            e.preventDefault();
+            spin += (e.deltaY + e.deltaX) * 0.15;
+            render();
+        }, { passive: false });
     }
 
     if (document.readyState === 'loading') {
