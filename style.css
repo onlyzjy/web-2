@@ -349,7 +349,7 @@ section {
     margin-left: calc(50% - 50vw);
     padding: 60px 24px;
     border-bottom: none;
-    background: #cfc7b8 url("works-desk.jpg") center / cover no-repeat;
+    background: #cfc7b8 url("works-desk.jpg") center 72% / cover no-repeat;
 }
 
 /* ---- 相机：抠图 + 磨砂字牌，点击进入作品集 ---- */
@@ -873,11 +873,18 @@ body.cz-picking * { cursor: crosshair !important; }
 
 /* ========== 板块引导横幅（My photography works / favorite songs / favorite movies） ========== */
 .intro-banner {
+    display: block;
     width: 100vw;
     margin-left: calc(50% - 50vw);
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 0;
     overflow: hidden;
 }
 .intro-banner img {
     display: block;
     width: 100%;
+    height: clamp(280px, 40vh, 460px);
+    object-fit: cover;
+    object-position: center;
 }
