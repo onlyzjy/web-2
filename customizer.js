@@ -70,6 +70,8 @@
             '<div class="cz-btns">' +
             '<button id="cz-reset" class="cz-btn cz-small">重置当前</button>' +
             '<button id="cz-reset-all" class="cz-btn cz-small cz-danger">全部还原</button>' +
+            '</div>' +
+            '<button id="cz-save" class="cz-btn cz-save">保存 💾</button>' +
             '</div></div>';
         document.body.appendChild(panel);
 
@@ -138,8 +140,25 @@
             loadControls(selected);
         });
 
-        panel.querySelector('#cz-reset-all').addEventListener('click', function () {
-            if (!confirm('确定要还原全部修改吗？')) return;
+        /* 保存：把当前所有调整下载为 custom-style.json（同时已实时存在浏览器本地） */
+        panel.querySelector('#cz-save').addEventListener('click', function () {
+            if (!Object.keys(rules).length) {
+                alert('还没有任何修改哦～');
+                return;
+            }
+            save();
+            var blob = new Blob([JSON.stringify(rules, null, 2)], { type: 'application/json' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'custom-style.json';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            this.textContent = '已保存 ✓';
+            var btn = this;
+            setTimeout(function () { btn.textContent = '保存 💾'; }, 1500);
+        });
+
+        panel.querySelector('#cz-reset-all').addEventListener('click', function () {            if (!confirm('确定要还原全部修改吗？')) return;
             rules = {};
             save();
             location.reload();
