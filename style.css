@@ -432,12 +432,6 @@ section {
     gap: 9px;
 }
 
-.music-hint-deer {
-    width: 72px;
-    filter: drop-shadow(0 6px 9px rgba(150, 110, 140, 0.25));
-    animation: cd-float 4.5s ease-in-out infinite;
-}
-
 .music-hint-text {
     font-family: "ZCOOL KuaiLe", "Microsoft YaHei", sans-serif;
     font-size: 17px;
@@ -672,4 +666,79 @@ footer {
     .brand-caret {
         display: none;
     }
+}
+
+/* ========== 自定义面板（调色盘 + 布局调整） ========== */
+#cz-toggle {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 10001;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(120, 90, 140, 0.3);
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#cz-toggle:hover { transform: scale(1.1) rotate(15deg); }
+
+#cz-body {
+    position: fixed;
+    right: 18px;
+    bottom: 82px;
+    z-index: 10001;
+    width: 250px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(120, 90, 140, 0.25);
+    display: none;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+#customizer.open #cz-body { display: block; }
+
+.cz-title {
+    margin: 0 0 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #7d6b9a;
+}
+.cz-info {
+    margin: 8px 0;
+    font-size: 12px;
+    color: #999;
+    word-break: break-all;
+}
+.cz-row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
+.cz-row label { flex: 0 0 92px; font-size: 12px; color: #666; }
+.cz-row input[type="range"] { flex: 1; accent-color: #c05aa8; }
+.cz-row input[type="color"] {
+    width: 36px; height: 26px; border: none; background: none; cursor: pointer;
+}
+.cz-btn {
+    display: block; width: 100%;
+    padding: 8px 0;
+    border: none; border-radius: 10px;
+    background: #c05aa8; color: #fff;
+    font-size: 13px; cursor: pointer;
+    transition: opacity 0.15s;
+}
+.cz-btn:hover { opacity: 0.85; }
+.cz-btn.active { background: #7d9fd9; }
+.cz-btns { display: flex; gap: 8px; margin-top: 10px; }
+.cz-btn.cz-small { font-size: 12px; padding: 7px 0; }
+.cz-btn.cz-danger { background: #d98a7d; }
+
+/* 选择模式下的可点击提示与选中高亮 */
+body.cz-picking { cursor: crosshair; }
+body.cz-picking * { cursor: crosshair !important; }
+.cz-selected {
+    outline: 2px dashed #c05aa8 !important;
+    outline-offset: 3px;
 }
