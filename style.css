@@ -391,6 +391,38 @@ section {
 }
 
 /* 左上角：小鹿贴纸 + 提示文字 */
+.music-heading {
+    position: absolute;
+    top: 84px;
+    left: 48px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.02;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.music-heading-line {
+    font-family: "Anton", "Arial Black", sans-serif;
+    font-size: clamp(30px, 4.6vw, 58px);
+    letter-spacing: .12em;
+    color: #4a4a6a;
+}
+
+.music-heading-serif {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(34px, 5.2vw, 66px);
+    letter-spacing: .06em;
+    color: #7d9fd9;
+    margin-top: 6px;
+}
+
+@media (max-width: 720px) {
+    .music-heading { top: 110px; left: 24px; }
+}
+
 .music-hint {
     position: absolute;
     top: 20px;
