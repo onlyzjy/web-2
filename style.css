@@ -870,3 +870,14 @@ body.cz-picking * { cursor: crosshair !important; }
 }
 }
 .cz-btn.cz-save { margin-top: 10px; background: #8fb7e8; }
+
+/* ========== 板块引导横幅（My photography works / favorite songs / favorite movies） ========== */
+.intro-banner {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+}
+.intro-banner img {
+    display: block;
+    width: 100%;
+}
