@@ -372,6 +372,29 @@ section {
     border-radius: 16px;
 }
 
+.camera-hint {
+    position: absolute;
+    top: -68px;
+    left: 50%;
+    translate: -50% 0;
+    padding: 7px 24px;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(220, 150, 180, 0.35);
+    font-family: "Comfortaa", Arial, sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: #d95f8f;
+    -webkit-text-stroke: 0.6px #c94f80;
+    white-space: nowrap;
+    animation: hint-bounce 1.8s ease-in-out infinite;
+}
+@keyframes hint-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+
 .camera-img {
     display: block;
     width: 100%;
