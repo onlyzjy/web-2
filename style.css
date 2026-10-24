@@ -742,3 +742,82 @@ body.cz-picking * { cursor: crosshair !important; }
     outline: 2px dashed #c05aa8 !important;
     outline-offset: 3px;
 }
+
+/* ========== 板块4：我的电影（仿拼贴档案，可左右拖动） ========== */
+.movies-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 96px);
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background: linear-gradient(180deg, #f6f2f7, #eef0f6);
+    overflow: hidden;
+}
+
+.movies-heading {
+    position: absolute;
+    top: 56px;
+    left: 48px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.02;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.movies-tip {
+    position: absolute;
+    right: 34px;
+    bottom: 20px;
+    font-family: "ZCOOL KuaiLe", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #b9a8c6;
+}
+
+.film-track {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 56px);
+    padding: 60px 10vw 40px;
+    cursor: grab;
+    user-select: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.film-track::-webkit-scrollbar { display: none; }
+.film-track.dragging { cursor: grabbing; scroll-behavior: auto; }
+
+.film {
+    flex: 0 0 auto;
+    transform: translateY(var(--ry)) rotate(var(--rot));
+    transition: transform 0.25s;
+    margin: 0;
+}
+.film:hover {
+    transform: translateY(var(--ry)) rotate(0deg) scale(1.04);
+    z-index: 2;
+}
+.film img {
+    display: block;
+    width: clamp(150px, 13vw, 220px);
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 14px 26px rgba(110, 90, 130, 0.28);
+    pointer-events: none;
+}
+.film figcaption {
+    margin-top: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #111;
+}
+
+@media (max-width: 720px) {
+    .movies-heading { top: 110px; left: 24px; }
+    .film { --ry: 0px !important; }
+}
