@@ -884,7 +884,5 @@ body.cz-picking * { cursor: crosshair !important; }
 .intro-banner img {
     display: block;
     width: 100%;
-    height: clamp(280px, 40vh, 460px);
-    object-fit: cover;
-    object-position: center;
+    height: auto;
 }
