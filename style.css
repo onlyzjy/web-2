@@ -65,13 +65,13 @@ section {
 
 .nav-inner {
     max-width: 900px;
-    height: 64px;
+    height: 60px;
     margin: 0 auto;
     padding: 0 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    justify-content: center;
+    gap: 10px;
 }
 
 .brand {
@@ -165,25 +165,26 @@ section {
 }
 
 .nav-link:hover {
-    color: #1c1220;
-    background: rgba(255, 255, 255, 0.55);
+    color: #a34d86;
+    background: #fbeaf6;
 }
 
-/* 当前所在板块 */
 .nav-link.is-active {
-    color: #4a2a44;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 8px rgba(120, 60, 110, 0.15);
+    color: #fff;
+    background: linear-gradient(120deg, #d77fb4, #c86aa6);
+    box-shadow: 0 4px 12px rgba(200, 106, 166, 0.35);
 }
+
+
 
 .site-header.is-scrolled .nav-link:hover {
     background: #f7ebf5;
 }
 
 .site-header.is-scrolled .nav-link.is-active {
-    color: #b8439e;
-    background: #f6e2f2;
-    box-shadow: none;
+    color: #fff;
+    background: linear-gradient(120deg, #d77fb4, #c86aa6);
+    box-shadow: 0 4px 12px rgba(200, 106, 166, 0.3);
 }
 
 .nav-link:focus-visible,
@@ -871,18 +872,59 @@ body.cz-picking * { cursor: crosshair !important; }
 }
 .cz-btn.cz-save { margin-top: 10px; background: #8fb7e8; }
 
-/* ========== 板块引导横幅（My photography works / favorite songs / favorite movies） ========== */
-.intro-banner {
-    display: block;
+/* ========== 板块标题白条 ========== */
+.section-bar {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 0;
-    overflow: hidden;
+    padding: 30px 24px;
+    background: #fff;
+    text-align: center;
+    line-height: 1;
+    box-shadow: 0 1px 0 rgba(150, 130, 160, 0.12);
 }
-.intro-banner img {
-    display: block;
-    width: 100%;
-    height: auto;
+.section-bar span {
+    display: inline-block;
+    font-family: "ZCOOL KuaiLe", "Microsoft YaHei", sans-serif;
+    font-size: 26px;
+    letter-spacing: 6px;
+    padding: 6px 34px;
+    border-radius: 999px;
 }
+.bar-works span { color: #6f8fc4; background: linear-gradient(180deg, #eaf1fb, #f4f7fd); }
+.bar-music span { color: #9b7fb0; background: linear-gradient(180deg, #f4eefb, #faf7fd); }
+.bar-movies span { color: #d9739a; background: linear-gradient(180deg, #fdedf3, #fff8fb); }
+
+@media (max-width: 720px) {
+    .section-bar { padding: 22px 16px; }
+    .section-bar span { font-size: 20px; letter-spacing: 4px; padding: 5px 22px; }
+}
+
+/* ========== 统一配色：页脚 / 联系我 / 回到顶部 ========== */
+body { background: #fdf9fb; }
+
+.contact {
+    margin: 0 auto;
+    padding: 54px 30px;
+    max-width: 720px;
+    text-align: center;
+    background: linear-gradient(165deg, #fdeef4 0%, #f3eefb 100%);
+    border-radius: 26px;
+    box-shadow: 0 18px 34px rgba(175, 140, 185, 0.22);
+}
+.contact h2 {
+    color: #9b7fb0;
+    letter-spacing: 4px;
+}
+.contact p { color: #6d6478; }
+.contact a { color: #c86aa6; }
+
+footer {
+    background: #f6ecf3;
+    color: #a58baa;
+    padding: 22px 0;
+    text-align: center;
+}
+footer, .contact { margin-bottom: 0; }
+
+.back-top { background: #d99fc9; }
+.back-top:hover { background: #c86aa6; }
